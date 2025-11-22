@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "fill-labs.dependi", // Dependency Management
+        "jnoortheen.nix-ide", // Nix Support
+        "rust-lang.rust-analyzer", // Rust Language Support
+        "tamasfe.even-better-toml", // TOML Support
+    ]
+}

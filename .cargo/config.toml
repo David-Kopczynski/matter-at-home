@@ -1,0 +1,19 @@
+[build]
+target = "riscv32imac-unknown-none-elf" # ESP32-C6
+
+[target.'cfg(all(target_arch = "riscv32", target_os = "none"))']
+runner = "espflash flash"
+rustflags = [
+    # [no_std] requirement on ESP32 targets
+    # see: https://esp32.implrust.com/std-to-no-std/linker-script.html
+    "-C",
+    "link-arg=-Tlinkall.x",
+
+    # RISC-V requirement for panic backtraces
+    # see: https://github.com/esp-rs/esp-hal/tree/main/esp-backtrace
+    "-C",
+    "force-frame-pointers",
+]
+
+[env]
+ESP_LOG = "info"
