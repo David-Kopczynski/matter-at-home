@@ -13,7 +13,7 @@ publish = false
 
 [[bin]]
 name = "light"
-required-features = ["release"]
+required-features = ["wifi", "release"]
 
 [[bin]]
 name = "sensor-pack"
@@ -101,10 +101,12 @@ esp-rtos = { version = "0.2", features = ["embassy", "esp-radio", "esp-alloc"] }
 
 # Embassy
 # see: https://github.com/embassy-rs/embassy
+embassy-embedded-hal = { version = "0.5" }
 embassy-executor = { version = "0.9", features = ["log"] }
 
 # Matter
 # see: https://github.com/project-chip/rs-matter
+rs-matter = { version = "0.1", default-features = false }
 rs-matter-embassy = { git = "https://github.com/sysgrok/rs-matter-embassy.git", features = [
     "esp",
     "log",

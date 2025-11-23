@@ -2112,6 +2112,7 @@ checksum = "0ca88d725a0a943b096803bd34e73a4437208b6077654cc4ecb2947a5f91618d"
 name = "matter-at-home"
 version = "0.1.0"
 dependencies = [
+ "embassy-embedded-hal",
  "embassy-executor",
  "esp-alloc",
  "esp-backtrace",
@@ -2123,6 +2124,7 @@ dependencies = [
  "esp-rtos",
  "esp-storage",
  "log",
+ "rs-matter",
  "rs-matter-embassy",
  "tinyrlibc",
 ]

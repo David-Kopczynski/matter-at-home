@@ -1,9 +1,10 @@
 #![no_std]
 #![no_main]
-#![deny(unsafe_code)]
+#![forbid(unsafe_code)]
 
 use esp_metadata_generated::*;
 use log::*;
+use rs_matter_embassy::*;
 
 // Panic handler is required for [no_std]
 use esp_backtrace as _;
@@ -61,6 +62,10 @@ async fn main(_spawner: embassy_executor::Spawner) {
     );
 
     info!("Setting up data model...");
+    const NODE: matter::dm::Node = rs_matter_embassy::matter::dm::Node {
+        id: 0,
+        endpoints: &[rs_matter_embassy::wireless::EmbassyWifiMatterStack::<0, ()>::root_endpoint()],
+    };
     let handler = rs_matter_embassy::matter::dm::EmptyHandler;
 
     info!("Configuring persistent sessions...");
@@ -80,15 +85,7 @@ async fn main(_spawner: embassy_executor::Spawner) {
             stack
         ),
         &persist,
-        (
-            rs_matter_embassy::matter::dm::Node {
-                id: 0,
-                endpoints: &[
-                    rs_matter_embassy::wireless::EmbassyWifiMatterStack::<0, ()>::root_endpoint()
-                ],
-            },
-            handler
-        ),
+        (NODE, handler),
         (),
     ))
     .await

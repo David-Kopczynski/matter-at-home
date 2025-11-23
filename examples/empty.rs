@@ -1,6 +1,6 @@
 #![no_std]
 #![no_main]
-#![deny(unsafe_code)]
+#![forbid(unsafe_code)]
 
 use esp_metadata_generated::*;
 use log::*;
