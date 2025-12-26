@@ -6,10 +6,6 @@
       (import (builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/stable.tar.gz"))
     ];
   },
-
-  # TODO: Remove unstable espflash upon stable working release
-  # espflash==3.3.0 does not correctly flash
-  unstable ? import <nixos-unstable> { },
 }:
 
 let
@@ -17,5 +13,5 @@ let
 in
 pkgs.mkShell {
 
-  packages = with pkgs; [ rust-bin ] ++ [ unstable.espflash ];
+  packages = with pkgs; [ rust-bin ] ++ [ espflash ];
 }
