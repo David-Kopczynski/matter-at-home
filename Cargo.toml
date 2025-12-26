@@ -17,7 +17,7 @@ required-features = ["wifi", "release"]
 
 [[bin]]
 name = "sensor-pack"
-required-features = ["release"]
+required-features = ["wifi", "release"]
 
 # -------- Examples to debug basic functionality ---------
 
@@ -70,6 +70,9 @@ wifi = ["rs-matter-embassy/embassy-net"]
 
 # Stability options
 release = ["esp-backtrace/custom-halt"]
+
+# Ignore unused feature warnings
+defmt = []
 
 # --------------------- Dependencies ---------------------
 

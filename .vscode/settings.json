@@ -8,5 +8,8 @@
     // Rust
     "rust-analyzer.cargo.allTargets": false,
     "rust-analyzer.cargo.target": "riscv32imac-unknown-none-elf", // ESP32-C6
-    "rust-analyzer.cargo.features": []
+    "rust-analyzer.cargo.features": [
+        "wifi",
+        "release"
+    ],
 }

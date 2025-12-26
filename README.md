@@ -47,14 +47,14 @@ To tinker with examples during development, you can use the following commands.
 
 ```bash
 # Check build
-cargo clippy --example empty
-cargo clippy --example thread --features thread
-cargo clippy --example wifi   --features wifi
+cargo clippy   --example empty
+cargo clippy   --example thread --features thread
+cargo clippy   --example wifi   --features wifi
 
 # Build, flash and monitor example
-cargo run --example empty                    --release -- --monitor --port /dev/ttyACM0
-cargo run --example thread --features thread --release -- --monitor --port /dev/ttyACM0
-cargo run --example wifi   --features wifi   --release -- --monitor --port /dev/ttyACM0
+sudo cargo run --example empty                    --release -- --monitor --port /dev/ttyACM0
+sudo cargo run --example thread --features thread --release -- --monitor --port /dev/ttyACM0
+sudo cargo run --example wifi   --features wifi   --release -- --monitor --port /dev/ttyACM0
 ```
 
 ## 🏗️ Projects
@@ -65,10 +65,10 @@ TODO
 
 ```bash
 # Check build
-cargo clippy --bin light --features release
+cargo clippy   --bin light --features wifi,release
 
 # Build, flash and monitor application
-cargo run --bin light --features release --release -- --monitor --port /dev/ttyACM0
+sudo cargo run --bin light --features wifi,release --release -- --monitor --port /dev/ttyACM0
 ```
 
 ### 📊 Sensor Pack
@@ -76,8 +76,8 @@ TODO
 
 ```bash
 # Check build
-cargo clippy --bin sensor-pack --features release
+cargo clippy   --bin sensor-pack --features wifi,release
 
 # Build, flash and monitor application
-cargo run --bin sensor-pack --features release --release -- --monitor --port /dev/ttyACM0
+sudo cargo run --bin sensor-pack --features wifi,release --release -- --monitor --port /dev/ttyACM0
 ```
