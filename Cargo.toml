@@ -19,10 +19,6 @@ required-features = ["wifi", "release"]
 name = "sensor-pack"
 required-features = ["release"]
 
-[[bin]]
-name = "thread-border-router"
-required-features = ["release"]
-
 # -------- Examples to debug basic functionality ---------
 
 [[example]]

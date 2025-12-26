@@ -16,9 +16,7 @@ This is a collection of my private smart home devices using [rs-matter-embassy](
 │   ├── bin/
 │   │   ├── light/                 # Light device implementation
 │   │   │   └── main.rs
-│   │   ├── sensor-pack/           # Sensor-Pack device implementation
-│   │   │   └── main.rs
-│   │   └── thread-border-router/  # Thread-Border-Router implementation
+│   │   └── sensor-pack/           # Sensor-Pack device implementation
 │   │       └── main.rs
 │   └── lib.rs                     # Common modules for examples and binaries
 ├── target/
@@ -82,15 +80,4 @@ cargo clippy --bin sensor-pack --features release
 
 # Build, flash and monitor application
 cargo run --bin sensor-pack --features release --release -- --monitor --port /dev/ttyACM0
-```
-
-### ⚡️ Thread Border Router
-TODO
-
-```bash
-# Check build
-cargo clippy --bin thread-border-router --features release
-
-# Build, flash and monitor application
-cargo run --bin thread-border-router --features release --release -- --monitor --port /dev/ttyACM0
 ```
