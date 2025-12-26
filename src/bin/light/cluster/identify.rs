@@ -22,7 +22,7 @@ impl IdentifyHandler {
 
 /// Cluster implementation for Identify
 impl identify::ClusterHandler for IdentifyHandler {
-    const CLUSTER: rs_matter::dm::Cluster<'static> =
+    const CLUSTER: matter::dm::Cluster<'static> =
         identify::FULL_CLUSTER.with_attrs(matter::with!(required));
 
     fn dataver(&self) -> u32 {
@@ -36,21 +36,21 @@ impl identify::ClusterHandler for IdentifyHandler {
 
     fn identify_time(
         &self,
-        _ctx: impl rs_matter::dm::ReadContext,
-    ) -> Result<u16, rs_matter::error::Error> {
+        _ctx: impl matter::dm::ReadContext,
+    ) -> Result<u16, matter::error::Error> {
         Ok(self.time.get())
     }
     fn identify_type(
         &self,
-        _ctx: impl rs_matter::dm::ReadContext,
-    ) -> Result<identify::IdentifyTypeEnum, rs_matter::error::Error> {
+        _ctx: impl matter::dm::ReadContext,
+    ) -> Result<identify::IdentifyTypeEnum, matter::error::Error> {
         Ok(identify::IdentifyTypeEnum::None)
     }
     fn set_identify_time(
         &self,
-        _ctx: impl rs_matter::dm::WriteContext,
+        _ctx: impl matter::dm::WriteContext,
         value: u16,
-    ) -> Result<(), rs_matter::error::Error> {
+    ) -> Result<(), matter::error::Error> {
         self.time.set(value);
 
         Ok(())
@@ -60,9 +60,9 @@ impl identify::ClusterHandler for IdentifyHandler {
 
     fn handle_identify(
         &self,
-        _ctx: impl rs_matter::dm::InvokeContext,
+        _ctx: impl matter::dm::InvokeContext,
         request: identify::IdentifyRequest<'_>,
-    ) -> Result<(), rs_matter::error::Error> {
+    ) -> Result<(), matter::error::Error> {
         // Fake identify in console
         if let Ok(time) = request.identify_time() {
             info!("Identify for {} seconds", time);
@@ -74,9 +74,9 @@ impl identify::ClusterHandler for IdentifyHandler {
     }
     fn handle_trigger_effect(
         &self,
-        _ctx: impl rs_matter::dm::InvokeContext,
+        _ctx: impl matter::dm::InvokeContext,
         _request: identify::TriggerEffectRequest<'_>,
-    ) -> Result<(), rs_matter::error::Error> {
+    ) -> Result<(), matter::error::Error> {
         // Optional effect not implemented
         Err(matter::error::ErrorCode::InvalidCommand.into())
     }
